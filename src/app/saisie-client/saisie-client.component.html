@@ -1,0 +1,85 @@
+<div ng-app="sample">
+    <form class="form-horizontal" name="registerForm">
+        <div class="form-group ">
+            <label class="col-md-3 control-label" for="Civi">Civilité</label><br> 
+            <div class="form-check form-check-inline col-md-4">
+                <input type="radio" id="Mme" name="Civi" [(ngModel)]= "formulaire.civi" value="Madame">
+                <label for="mme">Madame</label><br>
+                <input type="radio" id="Mr" name="Civi" [(ngModel)]= "formulaire.civi" value="Monsieur">
+                <label for="Mr">Monsieur</label><br>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Name">Nom</label>
+            <div class="col-md-4">
+                <input id="Name" type="text" class="form-control" name="Name" [(ngModel)]= "formulaire.lastname" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="FirstName">Prenom</label>
+            <div class="col-md-4">
+                <input id="FirstName" type="text" class="form-control" name="FirstName" [(ngModel)]= "formulaire.name" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Adress">Adresse</label>
+            <div class="col-md-4">
+                <input  id="Adress" type="text" class="form-control" name="Adress" [(ngModel)]= "formulaire.adress" required/>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label class="col-md-3 control-label" for="CP" [ngStyle]="{'color':formulaire.IsCpCorrect() == '' ? 'black' : 'red' }">Code Postal</label>
+                <input  id="CP" type="number" class="form-control" name="CP" [(ngModel)]= "formulaire.cp" required />
+            </div>
+        </div>
+        <div class="form-row">
+            <label class="form-group col-md-3 control-label" for="City">Ville</label>
+            <div class="col-md-4">
+                <input id="City" type="text" class="form-control" name="City" [(ngModel)]= "formulaire.city" required />
+            </div>
+        </div>
+        <div class="form-row">
+            <label class="form-group col-md-3 control-label" for="Pays">Pays</label>
+            <div class="col-md-4">
+                <input  id="Pays" type="text" class="form-control" name="Pays" [(ngModel)]= "formulaire.pays" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Phone" [ngStyle]="{'color':formulaire.IsPhoneNumberCorrect() == '' ? 'black' : 'red' }">Telephone</label>
+            <div class="col-md-4">
+                <input  id="Phone" type="tel" class="form-control" name="Phone" [(ngModel)]= "formulaire.phone" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Email" [ngStyle]="{'color':formulaire.IsEmailCorrect() == '' ? 'black' : 'red' }">Email</label>
+            <div class="col-md-4">
+                <input  id="Email" type="Email" class="form-control" name="Email" [(ngModel)]= "formulaire.email" required />
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Login">Identifiant</label>
+            <div class="col-md-4">
+                <input id="Login" type="text" class="form-control" name="Login" [(ngModel)]= "formulaire.login" required/>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="Password">Password</label>
+            <div class="col-md-4">
+                <input id="Password" type="password" class="form-control" name="Password"  />
+            </div> 
+        </div>
+        <div class="form-group">
+            <label class="col-md-3 control-label" for="ConfirmPassword">Confirm Password</label>
+            <div class="col-md-4">
+                <input id="ConfirmPassword" type="password" class="form-control" name="ConfirmPassword" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-3 col-md-9">
+                <button *ngIf="formulaire.IsFormCorrect()!=''" type="button" class="btn btn-success" (click) = "onClick()">Sign up</button>
+            </div>
+        </div>
+    </form>
+    <p *ngIf="formulaire.IsFormCorrect()!=''" id="error">{{formulaire.IsFormCorrect()}}</p>
+</div>

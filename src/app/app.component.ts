@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import Formulaire from './Formulaire';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,9 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'SPAAngular';
+  form = new Formulaire("","","","","",0,"","",0,""); 
+
+  submit(formulaire:Formulaire):void{
+    this.form = formulaire; 
+  }
 }
